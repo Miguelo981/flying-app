@@ -1,0 +1,54 @@
+{
+    "hotel": "DG2023",
+    "hotel_name": "Spring Hotel Bit\u00e1cora",
+    "short_description": "Hotel Bitacora is a fabulous choice for all-inclusive family holidays in Playa de las Am\u00e9ricas, right on the coast of sunny Tenerife.",
+    "address": "Calle California, I Playa de las Am\u00e9ricas",
+    "hotel_stars": 4,
+    "hotel_chains": "SPRING HOTELS",
+    "is_promoted": false,
+    "hotel_images": [
+        "https://test-api.oceanbooking.com/media/DG2023/1_RNmBXdq.jpeg",
+        "https://test-api.oceanbooking.com/media/DG2023/2_Zgb0DV3.jpeg",
+        "https://test-api.oceanbooking.com/media/DG2023/3_pjb4Dv4.jpeg"
+    ],
+    "products": [
+        {
+            "room": "D",
+            "boardtypes": [
+                {
+                    "boardtype": "HD",
+                    "boardtype_text": "Bed & Breakfast",
+                    "pricewithoffer": 1596.64,
+                    "pricewithoutoffer": 2016.0,
+                    "availability": 24,
+                    "ratecode": "PKG",
+                    "currencyid": "EUR"
+                },
+                {
+                    "boardtype": "MP",
+                    "boardtype_text": "Half Board",
+                    "pricewithoffer": 1660.0,
+                    "pricewithoutoffer": 2096.0,
+                    "availability": 24,
+                    "ratecode": "PKG",
+                    "currencyid": "EUR"
+                },
+                {
+                    "boardtype": "TI",
+                    "boardtype_text": "All Inclusive",
+                    "pricewithoffer": 1913.44,
+                    "pricewithoutoffer": 2416.0,
+                    "availability": 24,
+                    "ratecode": "PKG",
+                    "currencyid": "EUR"
+                }
+            ],
+            "images_room": [
+                "https://test-api.oceanbooking.com/media/DG2023/D/1_tStbOmJ.jpeg",
+                "https://test-api.oceanbooking.com/media/DG2023/D/2_PZNBuNd.jpeg"
+            ],
+            "room_title": "Double Standard room"
+        }
+    ],
+    "time": 0.25
+}

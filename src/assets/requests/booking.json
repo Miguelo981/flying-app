@@ -1,0 +1,28 @@
+[
+    {
+        "form": {
+            "first_name": "xxxxxx",
+            "middle_name": "xxxxxx",
+            "last_name": "xxxxxx",
+            "email": "xxx@xx",
+            "phone": "xxxxxx"
+        },
+        "hotel": "DG2023",
+        "products": [
+            {
+                "room": "D",
+                "boardtypes": [
+                    {
+                        "boardtype": "HD",
+                        "boardtype_text": "Bed & Breakfast",
+                        "pricewithoffer": 1596.64,
+                        "pricewithoutoffer": 2016,
+                        "availability": 24,
+                        "ratecode": "PKG",
+                        "currencyid": "EUR"
+                    }
+                ]
+            }
+        ]
+    }
+]
