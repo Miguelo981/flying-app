@@ -4,9 +4,14 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import HotelDetail from '@/components/Hotel/HotelDetail'
 import { toast } from 'sonner';
-import ShoppingCart from '@/components/ShoppingCart'
+import ShoppingCart from '@/components/ShoppingCart/ShoppingCart'
 import PromoForm from '@/components/PromoForm'
 
+/**
+ * 
+ * @description
+ * This component is responsible for showing the hotel page using hotel id in the route params.
+ */
 export default function HotelPage() {
     const [hotel, setHotel] = useState<Hotel>()
     const [isHotelFetching, setIsHotelFetching] = useState<boolean>(false)
@@ -37,13 +42,13 @@ export default function HotelPage() {
     }, [])
 
     return (
-        <div className='flex-col'>
+        <div className=''>
             <header>
                 <div className='w-3/4 py-8 border-b border-gray-300'>
                     <h1 className='text-blue-800 text-4xl'>Tu viaje recomendado</h1>
                 </div>
             </header>
-            <section className='flex'>
+            <section className='flex gap-10'>
                 <div className='w-3/4 space-y-8'>
                     <h3 className='mt-8 inline-flex items-center gap-1 text-xl'>
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-5" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -59,7 +64,7 @@ export default function HotelPage() {
                         <p>Loading...</p>
                     )}
                 </div>
-                <aside className='flex-col gap-4'>
+                <aside className='flex flex-col gap-4 w-1/4'>
                     <ShoppingCart />
                     <PromoForm />
                 </aside>

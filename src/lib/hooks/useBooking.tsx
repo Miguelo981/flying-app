@@ -2,11 +2,16 @@ import { BookingData } from "../models/booking";
 import { Boardtype } from "../models/hotel";
 import { useBookingStore } from "../stores/useBookingStore";
 
+/**
+ * 
+ * @description
+ * This hook is responsible for managing the booking data.
+ */
 export default function useBooking() {
-    const { sessionBookingData, removeBoardType, addBoardType, addProduct } = useBookingStore();
+    const { sessionBookingData, removeBoardType, addBoardType, addProduct, deleteProduct, resetBooking } = useBookingStore();
 
     const addPension = (bookingData: BookingData) => {
-        const bookingExists = sessionBookingData.find((hotelBookingData) => hotelBookingData.hotel === bookingData.hotel);
+        const bookingExists = sessionBookingData.find((hotelBookingData) => hotelBookingData.hotelInfo?.hotel === bookingData.hotel.hotel);
 
         if (!bookingExists) {
             return addProduct(bookingData);
@@ -28,7 +33,7 @@ export default function useBooking() {
     }
 
     const removePension = (bookingData: BookingData) => {
-        const bookingExists = sessionBookingData.find((hotelBookingData) => hotelBookingData.hotel === bookingData.hotel);
+        const bookingExists = sessionBookingData.find((hotelBookingData) => hotelBookingData.hotelInfo?.hotel === bookingData.hotel.hotel);
 
         if (!bookingExists) return;
 
@@ -61,10 +66,36 @@ export default function useBooking() {
         return !!boardTypeExists
     }
 
+    const removeProduct = (bookingData: BookingData) => {
+        const bookingExists = sessionBookingData.find((hotelBookingData) => hotelBookingData.hotelInfo?.hotel === bookingData.hotel.hotel);
+
+        if (!bookingExists) return;
+
+        const productExists = bookingExists.products.find((product) => bookingData.product.room === product.room);
+
+        if (!productExists) return;
+
+        return deleteProduct(bookingData);
+    }
+
+    const getFinalPrice = (): number => {
+        return sessionBookingData?.map(bookingData => bookingData.products
+            .map(prod => prod.boardtypes.flat(2)))
+            .flat(2)
+            .reduce((prev, curr) => prev + curr.pricewithoutoffer, 0);
+    }
+
+    const clearBooking = () => {
+        return resetBooking();
+    }
+
     return {
         sessionBookingData,
         addPension,
         removePension,
         boardTypeExists,
+        getFinalPrice,
+        removeProduct,
+        clearBooking,
     }
 }

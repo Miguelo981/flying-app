@@ -1,6 +1,11 @@
 import { DEATLINE_TIMEOUT_IN_MINUTES } from "../constants"
 import { useTimerStore } from "../stores/useTimerStore"
 
+/**
+ * 
+ * @description
+ * This hook is responsible for managing the timer.
+ */
 export default function useTimer() {
     const { sessionTimeout, clearTimer, setTimer } = useTimerStore()
     

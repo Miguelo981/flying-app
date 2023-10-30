@@ -8,6 +8,8 @@ type useBookingStoreProps = {
     addBoardType: (boardType: Boardtype, bookingData: BookingData) => void
     removeBoardType: (boardType: Boardtype, bookingData: BookingData) => void
     addProduct: (booking: BookingData) => void
+    deleteProduct: (booking: BookingData) => void
+    resetBooking: () => void
 }
 
 export const useBookingStore = create(
@@ -19,7 +21,8 @@ export const useBookingStore = create(
                     sessionBookingData: [
                         ...state.sessionBookingData,
                         {
-                            hotel: bookingData.hotel,
+                            hotel: bookingData.hotel.hotel,
+                            hotelInfo: bookingData.hotel,
                             products: [bookingData.product],
                         } as Booking,
                     ],
@@ -27,7 +30,7 @@ export const useBookingStore = create(
             addBoardType: (boardType, { hotel, product }) =>
                 set((state) => {
                     const bookingData = state.sessionBookingData.find(
-                        (sbd) => sbd.hotel === hotel
+                        (sbd) => sbd.hotelInfo?.hotel === hotel.hotel
                     )
 
                     if (!bookingData)
@@ -47,7 +50,7 @@ export const useBookingStore = create(
             removeBoardType: (boardType, { hotel, product }) =>
                 set((state) => {
                     const bookingData = state.sessionBookingData.find(
-                        (sbd) => sbd.hotel === hotel
+                        (sbd) => sbd.hotelInfo?.hotel === hotel.hotel
                     )
 
                     if (!bookingData)
@@ -67,6 +70,14 @@ export const useBookingStore = create(
 
                     return { sessionBookingData: state.sessionBookingData }
                 }),
+            deleteProduct: (bookingData) =>
+                set((state) => ({
+                    sessionBookingData: state.sessionBookingData.filter(
+                        (sbd) =>
+                            sbd.hotelInfo?.hotel !== bookingData.hotel.hotel
+                    ),
+                })),
+            resetBooking: () => set({ sessionBookingData: [] }),
         }),
         {
             name: 'session-booking',

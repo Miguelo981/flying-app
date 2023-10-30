@@ -10,6 +10,11 @@ import SuccessPage from '@/pages/Success'
 import CheckoutPage from '@/pages/Checkout'
 import NotFoundPage from './pages/404'
 
+
+/**
+ * @description
+ * This component is responsible for handling the routing of the application.
+ */
 export const AppRouter = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Header />}>

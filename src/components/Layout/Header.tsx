@@ -1,13 +1,8 @@
-import { useState } from 'react'
+import { usePromoCodeStore } from '@/lib/stores/usePromoCodeStore';
 import { Outlet, Link } from 'react-router-dom'
 
 const Header = () => {
-    const [current, setCurrent] = useState('h')
-
-    const onClick = (e) => {
-        console.log('click ', e)
-        setCurrent(e.key)
-    }
+    const { code } = usePromoCodeStore();
 
     return (
         <>
@@ -16,11 +11,16 @@ const Header = () => {
                     <span className="text-xs">Tu búsqueda</span>
                     <p className='font-semibold'>SPRING, 2 adultos, 10/03/2024 a 16/03/2024</p>
                 </div>
-                <nav onClick={onClick}>
+                <nav>
                     <ul>
                         <li>
                             <Link to="/" className='underline'>Nueva búsqueda</Link>
                         </li>
+                        {
+                            code.length > 0 && code === '15MP' ?
+                            <span>Código { code }</span>
+                            : null
+                        }
                     </ul>
                 </nav>
             </header>

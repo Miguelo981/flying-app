@@ -1,3 +1,15 @@
+export interface HotelInfo {
+    address: string
+    hotel: string
+    hotel_chains: string
+    hotel_images: string[]
+    hotel_name: string
+    hotel_stars: number
+    is_promoted: boolean
+    short_description: string
+    time: number
+}
+
 export interface Hotel {
     address: string
     hotel: string
@@ -9,6 +21,11 @@ export interface Hotel {
     products: Product[]
     short_description: string
     time: number
+}
+
+export interface Room {
+    roomId: string
+    roomTitle: string
 }
 
 export interface Product {
@@ -26,6 +43,9 @@ export interface Boardtype {
     pricewithoffer: number
     pricewithoutoffer: number
     ratecode: string
+    show?: boolean
+    btnColor?: string
+    discount?: number
 }
 
 export interface HotelBookingData {

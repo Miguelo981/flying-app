@@ -5,6 +5,11 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'sonner'
 
+/**
+ * 
+ * @description
+ * This component is responsible for showing the home page list of available hotels.
+ */
 export default function HomePage() {
     const [hotels, setHotels] = useState<Hotel[]>()
     const [isHotelsFetching, setIsHotelsFetching] = useState<boolean>(false)
@@ -34,7 +39,7 @@ export default function HomePage() {
                 <p>Loading...</p>
             ) : (
                 hotels?.map((hotel) => (
-                    <article key={hotel.hotel} className="flex-col rounded-br-2xl rounded-t-2xl border border-gray-200">
+                    <article key={hotel.hotel} className="flex-col rounded-br-2xl rounded-t-2xl border border-gray-200" data-testid="hotel-id">
                         <Link to={`/hotel/${hotel.hotel}`}>
                             <HotelHeaderDetail hotel={hotel} />
                         </Link>

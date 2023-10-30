@@ -1,3 +1,7 @@
+/**
+ * 
+ * @description Error page 404
+ */
 export default function NotFoundPage() {
     return (
         <section className="w-screen h-screen flex justify-center items-center">
