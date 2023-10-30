@@ -4,6 +4,13 @@ import { Hotel } from "@/lib/models/hotel";
 
 const apiUrl = new URL(HOTEL_API_URL)
 
+/**
+ * 
+ * @returns {Hotel[]} a list of hotels
+ * @throws {Error} if the request fails
+ * @description
+ * This function returns a list of hotels
+ */
 export async function findHotels(): Promise<Hotel[]> {
     const response = await fetch(`${apiUrl}/post`, {
         method: "POST",
@@ -21,6 +28,14 @@ export async function findHotels(): Promise<Hotel[]> {
     return [data.json];
 }
 
+/**
+ * 
+ * @param id 
+ * @returns {Hotel} the hotel with the given id
+ * @throws {Error} if the request fails
+ * @description
+ * This function returns a hotel by id
+ */
 export async function getHotel(id: string): Promise<Hotel> {
     apiUrl.pathname = `/post`;
     apiUrl.searchParams.set("id", id);

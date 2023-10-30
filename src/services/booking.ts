@@ -3,6 +3,13 @@ import { Booking } from "@/lib/models/booking";
 
 const apiUrl = new URL(HOTEL_API_URL)
 
+/**
+ * 
+ * @param {Booking} the booking data
+ * @throws {Error} if the request fails
+ * @description
+ * This function reservers a booking
+ */
 export async function reserveBooking(booking: Booking) {
     apiUrl.pathname = '/status'
 
@@ -18,6 +25,6 @@ export async function reserveBooking(booking: Booking) {
         throw new Error(response.statusText)
     }
 
-    const data = await response.json()
-    return data
+    /* const data = await response.json()
+    return data */
 }
